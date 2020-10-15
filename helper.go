@@ -1,7 +1,9 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -50,5 +52,8 @@ func equal(a, b []Media) bool {
 }
 
 func checkVariables() {
-
+	if endpoint == "" || userKey == "" || apiKey == "" || awsRegion == "" || snsArn == "" {
+		flag.Usage()
+		os.Exit(0)
+	}
 }
